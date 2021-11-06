@@ -1,0 +1,41 @@
+# General Parameters
+modelType: xvecTDNN # Model class. (xvecTDNN, xivecTDNN)
+egDir: /home/zhouwj/MyWorks/Kaldi/egs/zhouwj/sre/exp/tdnn_aishell1/egs # Directory with training archives
+
+# Training Parameters 
+numSpkrs: 380 # Number of output labels
+numArchives: 26 # Number of egs.*.ark files
+numEgsPerArk: 1900 # Number of training examples per egs file
+featDim: 23 # Dim of feature
+batchSize: 32 # Batch size
+logStepSize: 20 # Iterations per log
+lossType: softmax # arcface, cosface, softmax
+
+# Optimization Parameters
+baseLR: 1e-3 # Initial LR
+maxLR: 2e-3 # Maximum LR
+numEpochs: 2 # Number of training epochs
+noiseEps: 1e-5 # Noise strength before pooling
+preFetchRatio: 30 # xbatchSize to fetch from dataloader
+stepFrac: 0.5 # Training iteration when dropout = pDropMax
+pDropMax: 0.2 # Maximum dropout probability
+
+# Extraction Parameters
+layerName: fc1 # DNN layer for embeddings
+nProcs: 10 # Number of parallel processes. Default=0(Number of input directory splits)
+trainFeaDir: /home/zhouwj/MyWorks/Kaldi/egs/zhouwj/sre/data/aishell_train_dev_combined_sub # Directory containing features ready for extraction
+trainEmbedDir: ./exp/aishell1_exp/aishell_train_sub # Output directory
+enrollFeaDir: /home/zhouwj/MyWorks/Kaldi/egs/zhouwj/sre/data/aishell_test/enroll
+enrollEmbedDir: ./exp/aishell1_exp/aishell_enroll
+evalFeaDir: /home/zhouwj/MyWorks/Kaldi/egs/zhouwj/sre/data/aishell_test/eval
+evalEmbedDir: ./exp/aishell1_exp/aishell_eval
+
+# Scoring Parameters
+utt2spkTrain: /home/zhouwj/MyWorks/Kaldi/egs/zhouwj/sre/data/aishell_train_dev_combined/utt2spk
+spk2uttEnroll: /home/zhouwj/MyWorks/Kaldi/egs/zhouwj/sre/data/aishell_test/enroll/spk2utt
+spk2nuttEnroll: /home/zhouwj/MyWorks/Kaldi/egs/zhouwj/sre/exp/tdnn_aishell1/xvectors_aishell_test/enroll/num_utts.ark
+trials: /home/zhouwj/MyWorks/Kaldi/egs/zhouwj/sre/data/aishell_test/aishell_speaker_ver.lst
+ldaFlag: 0 # (0), (1)
+ldaDim: 200 # Reduced dimension of xvecs
+evalType: plda # cosine, plda
+
