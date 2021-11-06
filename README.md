@@ -6,7 +6,7 @@ Kaldi相关IO包：
 
 
 ```
-python train_xi_vec.py
+python train.py
 python evaluate.py
 ```
 
